@@ -9,7 +9,6 @@ JMX
 基于springboot 的spring boot admin的快速搭建
 SSH
 
-
 ## 基于springboot的微服务框架spring cloud
 
 spring cloud利用springboot 特性提供了微服务框架的全家桶
@@ -26,4 +25,4 @@ spring cloud利用springboot 特性提供了微服务框架的全家桶
  dockerfile编写
  docker compose yaml文件编写
  docker运行
-
+ 
