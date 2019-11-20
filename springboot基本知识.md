@@ -4,7 +4,7 @@
 
 ## 本地开发环境准备
 
-1. java8的本地暗转
+1. java8的本地安装
 2. IDE的下载与安装 eclipse，sbt，intellij
 3. maven的下载与配置
   
