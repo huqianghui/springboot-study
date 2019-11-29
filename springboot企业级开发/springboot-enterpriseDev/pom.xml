@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hu.study</groupId>
+    <artifactId>SpringBoot-enterpriseDev</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.1.2.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <packaging>pom</packaging>
+    <description>Spring Boot企业级开发</description>
+
+    <modules>
+        <module>chapter6-1</module>
+        <module>chapter6-2</module>
+        <module>chapter6-3/jwt-authserver</module>
+        <module>chapter6-3/jwt-resourceserver</module>
+        <module>chapter7-1</module>
+        <module>chapter7-2</module>
+        <module>chapter8-1</module>
+        <module>chapter9-1</module>
+    </modules>
+
+
+</project>

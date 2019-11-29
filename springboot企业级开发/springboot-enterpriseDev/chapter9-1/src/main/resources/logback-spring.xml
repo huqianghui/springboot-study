@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2010-2011 The myBatis Team
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+        http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<configuration>
+    <!--======================================= 本地变量 ========================================-->
+
+    <!-- 应用名称：和统一配置中的项目代码保持一致（小写） -->
+    <property name="LOG_HOME" value="./logs"/>
+    <property name="APP_NAME" value="SpringLogbackExampleApplication"/>
+    <!-- 日志文件保留天数-->
+    <property name="LOG_MAX_HISTORY" value="30"/>
+    <!-- 定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
+    <!-- 应用日志文件保存路径 -->
+    <property name="LOG_APP_HOME" value="${LOG_HOME}/${APP_NAME}/app"/>
+    <!-- 系统日志文件保存路径  -->
+    <property name="LOG_SYS_HOME" value="${LOG_HOME}/${APP_NAME}/sys"/>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_APP_HOME}/project.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_APP_HOME}/project.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>${LOG_MAX_HISTORY}</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{applicationName} %X{IP} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 为了防止开启log4jdbc 之后,导致日志的激增,默认关闭某些logger。
+            log4jdbc.sqltiming 计时统计SQL的执行用时,OFF/ERROR/WARN/INFO:彻底关闭，,DEBUG:输出所有的SQL时间(根据耗时有DEBUG/WARN/ERROR不同级别),TRACE:输出调用时堆栈信息。
+            log4jdbc.debug 为WARN或者以上级别时，没有信息输出，INFO时仅输出启动时的配置信息，DEBUG时输出详细的DEBUG信息 -->
+    <logger name="log4jdbc.sqltiming">
+        <level value="TRACE" />
+    </logger>
+
+    <logger name="log4jdbc.debug">
+        <level value="TRACE" />
+    </logger>
+
+    <logger name="com.mchange.v2.c3p0">
+        <level value="ERROR" />
+    </logger>
+
+    <logger name="javax.servlet">
+        <level value="ERROR" />
+    </logger>
+
+    <logger name="org.springframework.web.client">
+        <level value="ERROR" />
+    </logger>
+
+    <!--===============================  日志输出: 默认主业务日志 ======================================-->
+    <root level="info">
+        <!--线上换成APP-->
+        <appender-ref ref="APP"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

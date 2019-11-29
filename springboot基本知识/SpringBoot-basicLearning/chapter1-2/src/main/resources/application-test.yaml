@@ -1,0 +1,8 @@
+server:
+  port: 9080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,metrics,env
+      base-path: /test

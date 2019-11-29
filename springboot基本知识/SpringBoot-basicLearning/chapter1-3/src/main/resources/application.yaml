@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Chapter13
+  profiles:
+    active: test
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+server:
+  tomcat:
+    uri-encoding: UTF-8
