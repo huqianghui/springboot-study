@@ -1,0 +1,23 @@
+spring:
+  freemarker:
+    cache: false
+    charset: UTF-8
+    content-type: text/html
+    suffix: .ftl
+    check-template-location: true
+    template-loader-path: classpath:/templates
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    request-context-attribute: request
+    settings:
+       default_encoding: UTF-8
+       output_encoding: UTF-8
+       url_escaping_charset: UTF-8
+       tag_syntax: auto_detect
+       locale: zh_CN
+       datetime_format: yyyy-MM-dd HH:mm:ss
+       date_format: yyyy-MM-dd
+       time_format: HH:mm:ss
+server:
+  port: 0

@@ -23,7 +23,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index(ModelMap map) {
-        map.addAttribute("host", "http://blog.didispace.com");
+        map.addAttribute("host", "https://github.com/huqianghui/");
         return "index";
     }
 
