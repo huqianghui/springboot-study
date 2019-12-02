@@ -2,7 +2,7 @@ spring:
   application:
     name: Chapter13
   profiles:
-    active: test
+    active: dev
   http:
     encoding:
       force: true

@@ -1,0 +1,303 @@
+openapi: 3.0.1
+info:
+  title: hu-study-swagger
+  description: hu study of swagger 2.x
+  termsOfService: https://github.com/dyc87112/spring-boot-starter-swagger
+  contact:
+    name: hu
+    url: https://github.com/huqianghui/springboot-study
+    email: huqianghui0613@163.com
+  license:
+    name: Apache License, Version 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.9.0.RELEASE
+servers:
+- url: //localhost:18080/
+tags:
+- name: 用户管理
+  description: User Controller
+paths:
+  /users/:
+    get:
+      tags:
+      - 用户管理
+      summary: 获取用户列表
+      operationId: getUserListUsingGET
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+                x-content-type: '*/*'
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-swagger-router-controller: ""
+    post:
+      tags:
+      - 用户管理
+      summary: 创建用户
+      description: 根据User对象创建用户
+      operationId: postUserUsingPOST
+      requestBody:
+        description: user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                x-content-type: '*/*'
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-codegen-request-body-name: user
+      x-swagger-router-controller: ""
+  /users/byIdAndName:
+    get:
+      tags:
+      - 用户管理
+      summary: 通过ID和名字获取单个用户信息
+      operationId: getUserByIdAndNameUsingGET
+      parameters:
+      - name: name
+        in: query
+        description: 用户名
+        required: true
+        schema:
+          type: string
+        example: hu
+      - name: userId
+        in: query
+        description: 用户ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-swagger-router-controller: ""
+  /users/byIdOrName:
+    get:
+      tags:
+      - 用户管理
+      summary: 通过ID或者名字获取单个用户信息
+      operationId: getUserByIdOrNameUsingGET
+      parameters:
+      - name: name
+        in: query
+        description: 用户名
+        schema:
+          type: string
+        example: hu
+      - name: userId
+        in: query
+        description: 用户ID
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-swagger-router-controller: ""
+  /users/{id}:
+    get:
+      tags:
+      - 用户管理
+      summary: 获取用户详细信息
+      description: 根据url的id来获取用户详细信息
+      operationId: getUserUsingGET
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-swagger-router-controller: ""
+    put:
+      tags:
+      - 用户管理
+      summary: 更新用户详细信息
+      description: 根据url的id来指定更新对象，并根据传过来的user信息来更新用户详细信息
+      operationId: putUserUsingPUT
+      parameters:
+      - name: id
+        in: path
+        description: 用户编号
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 1
+      requestBody:
+        description: user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                x-content-type: '*/*'
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-codegen-request-body-name: user
+      x-swagger-router-controller: ""
+    delete:
+      tags:
+      - 用户管理
+      summary: 删除用户
+      description: 根据url的id来指定删除对象
+      operationId: deleteUserUsingDELETE
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                x-content-type: '*/*'
+        "204":
+          description: No Content
+          content: {}
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+      deprecated: false
+      x-swagger-router-controller: ""
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        age:
+          maximum: 1E+2
+          exclusiveMaximum: false
+          minimum: 1E+1
+          exclusiveMinimum: false
+          type: integer
+          description: 用户年龄
+          format: int32
+        email:
+          type: string
+          description: 用户邮箱
+        id:
+          type: integer
+          description: 用户编号
+          format: int64
+        name:
+          maxLength: 5
+          minLength: 2
+          type: string
+          description: 用户姓名
+      description: 用户实体
+      example:
+        name: name
+        id: 6
+        age: 17
+        email: email

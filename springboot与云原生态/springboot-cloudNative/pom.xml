@@ -22,6 +22,7 @@
     <description>Spring Boot高级教程</description>
 
     <modules>
+        <module>chapter11-1</module>
     </modules>
 
 
