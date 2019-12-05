@@ -7,7 +7,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.util.ClassUtils;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -15,7 +14,6 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 import java.util.List;
 
@@ -23,10 +21,6 @@ import java.util.List;
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurationSupport implements WebMvcConfigurer {
 
-
-    private static final boolean jackson2Present =
-            ClassUtils.isPresent("com.fasterxml.jackson.databind.ObjectMapper", WebMvcConfigurationSupport.class.getClassLoader()) &&
-                    ClassUtils.isPresent("com.fasterxml.jackson.core.JsonGenerator", WebMvcConfigurationSupport.class.getClassLoader());
 
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -144,13 +138,4 @@ public class WebConfig extends WebMvcConfigurationSupport implements WebMvcConfi
         handlerMethodReturnValueHandlerComposite.addHandlers(requestResponseBodyMethodProcessor.getDefaultReturnValueHandlers());
         returnValueHandlers.add(0, handlerMethodReturnValueHandlerComposite);
     }
-
-    @Bean
-    public RequestMappingHandlerAdapter requestMappingHandlerAdapter() {
-        RequestMappingHandlerAdapter adapter = super.requestMappingHandlerAdapter();
-        adapter.setReturnValueHandlers(getReturnValueHandlers());
-        adapter.setArgumentResolvers(getArgumentResolvers());
-        return adapter;
-    }
-
 }

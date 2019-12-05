@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users", catalog = "test")
+@Table(name = "users")
 public class Users {
 
     @Id
@@ -15,7 +15,6 @@ public class Users {
     @Column(name = "name")
     private String name;
     private Integer salary;
-    private String teamName;
 
     public Users() {
     }
@@ -42,13 +41,5 @@ public class Users {
 
     public void setSalary(Integer salary) {
         this.salary = salary;
-    }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
     }
 }

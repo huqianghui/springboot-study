@@ -41,7 +41,16 @@ spring.security.user.password=admin
 spring.security.user.roles=admin
 ```
 
-* 关闭默认的安全访问控制
+* springSecurity 实现方式是通过过滤器实现，有如下过滤器
+![filter](./springboot企业级开发/imgs/springSecurityFilters.png)
+
+* permitAll实现逻辑，通过维护Map来放行(PermitAllSupport.java)
+![permitAll](./springboot企业级开发/imgs/permitAllUrlMap.png)
+
+* 不需要认证的页面显示
+![freedom](./springboot企业级开发/imgs/freedomPage.png)
+
+* 关闭默认的安全访问控制(UsernamePasswordAuthenticationFilter.java)
 
 旧版的 spring security 关闭默认安全访问控制，只需要在配置文件中关闭即可：
 

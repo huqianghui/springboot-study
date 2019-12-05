@@ -136,6 +136,8 @@ ENTRYPOINT ["java","-jar","/app.jar"]
  docker run -p 8090:8090 -d  hu-study/chapter11-1:0.0.1-SNAPSHOT
  ```
 
+***参照代码chapter11-1***
+
 ## 基于springboot的微服务框架spring cloud
 
 spring cloud利用springboot 特性提供了微服务框架的全家桶
@@ -146,3 +148,7 @@ spring cloud利用springboot 特性提供了微服务框架的全家桶
 4. 服务熔断与限流 hystrix
 5. 服务网关 zuul
 6. 服务链路监控
+
+我们通过构建一个最简单的eureka，springboot-admin，hello-server来组成一个练习用的微服务。
+
+***参照代码chapter12-1***

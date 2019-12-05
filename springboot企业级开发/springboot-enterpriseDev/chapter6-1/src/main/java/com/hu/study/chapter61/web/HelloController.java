@@ -12,6 +12,16 @@ public class HelloController {
         return "index";
     }
 
+    @RequestMapping("/index")
+    public String indexDef() {
+        return "index";
+    }
+
+    @RequestMapping("/freedom")
+    public String freedom() {
+        return "freedom";
+    }
+
     @RequestMapping("/hello")
     public String hello() {
         return "hello";

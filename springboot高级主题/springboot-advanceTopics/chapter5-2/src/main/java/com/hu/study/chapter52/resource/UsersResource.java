@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rest/users")
+@RequestMapping("/users")
 public class UsersResource {
 
     private UsersMapper usersMapper;
@@ -26,13 +26,10 @@ public class UsersResource {
 
     @GetMapping("/update")
     private List<Users> update() {
-
         Users users = new Users();
         users.setName("Youtube");
         users.setSalary(2333L);
-
         usersMapper.insert(users);
-
         return usersMapper.findAll();
     }
 }
