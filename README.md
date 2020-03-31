@@ -42,6 +42,10 @@
 
 ## 基于springboot的微服务框架spring cloud
 
+*********
+
+## 增加kubernetes比较
+
 
 
 
